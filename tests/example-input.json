@@ -1,0 +1,53 @@
+[
+  {
+    "severity": "error",
+    "line_from": 140,
+    "line_to": 140,
+    "type": "MixedAssignment",
+    "message": "Cannot assign $proc to a mixed type",
+    "file_name": "src\/Support\/SupportPort.php",
+    "file_path": "\/Users\/marisa\/devfiles\/titanhq\/support-port\/src\/Support\/SupportPort.php",
+    "snippet": "        foreach ($out as $proc) {",
+    "selected_text": "$proc",
+    "from": 3582,
+    "to": 3587,
+    "snippet_from": 3557,
+    "snippet_to": 3590,
+    "column_from": 26,
+    "column_to": 31
+  },
+  {
+    "severity": "error",
+    "line_from": 141,
+    "line_to": 141,
+    "type": "MixedArgument",
+    "message": "Argument 2 of preg_match cannot be mixed, expecting string",
+    "file_name": "src\/Support\/SupportPort.php",
+    "file_path": "\/Users\/marisa\/devfiles\/titanhq\/support-port\/src\/Support\/SupportPort.php",
+    "snippet": "            if (preg_match(\"\/^ *([0-9]+) sh -c \/\", $proc)) {",
+    "selected_text": "$proc",
+    "from": 3642,
+    "to": 3647,
+    "snippet_from": 3591,
+    "snippet_to": 3651,
+    "column_from": 52,
+    "column_to": 57
+  },
+  {
+    "severity": "error",
+    "line_from": 144,
+    "line_to": 144,
+    "type": "MixedArgument",
+    "message": "Argument 2 of preg_match cannot be mixed, expecting string",
+    "file_name": "src\/Support\/SupportPort.php",
+    "file_path": "\/Users\/marisa\/devfiles\/titanhq\/support-port\/src\/Support\/SupportPort.php",
+    "snippet": "            if (preg_match(\"\/^ *([0-9]+) .*ssh -fNT -i {$key} -R 0:0.0.0.0:22 {$user}@{$host}\/\", $proc, $matches)) {",
+    "selected_text": "$proc",
+    "from": 3789,
+    "to": 3794,
+    "snippet_from": 3692,
+    "snippet_to": 3808,
+    "column_from": 98,
+    "column_to": 103
+  }
+]
