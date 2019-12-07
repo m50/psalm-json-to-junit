@@ -2,7 +2,7 @@
 <testsuites>
   <testsuite failures="3" warnings="0" name="psalm" tests="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/junit-team/junit5/r5.5.1/platform-tests/src/test/resources/jenkins-junit.xsd">
     <testsuite name="src/File.php" file="src/File.php" assertions="3" failures="3" warnings="0" tests="2">
-      <testcase name="MixedAssignment" file="src/File.php" class="MixedAssignment" classname="MixedAssignment" line="140" assertions="1">
+      <testcase name="src/File.php:140" file="src/File.php" class="MixedAssignment" classname="MixedAssignment" line="140" assertions="1">
         <failure type="MixedAssignment">message: Cannot assign $proc to a mixed type
 type: MixedAssignment
 snippet: foreach ($out as $proc) {
@@ -12,7 +12,7 @@ column_from: 26
 column_to: 31
 </failure>
       </testcase>
-      <testcase name="MixedArgument" file="src/File.php" class="MixedArgument" classname="MixedArgument" line="141" assertions="2">
+      <testcase name="src/File.php:141" file="src/File.php" class="MixedArgument" classname="MixedArgument" line="141" assertions="2">
         <failure type="MixedArgument">message: Argument 2 of preg_match cannot be mixed, expecting string
 type: MixedArgument
 snippet: if (preg_match("/^ *([0-9]+) sh -c /", $proc)) {
@@ -21,6 +21,8 @@ line: 141
 column_from: 52
 column_to: 57
 </failure>
+      </testcase>
+      <testcase name="src/File.php:144" file="src/File.php" class="MixedArgument" classname="MixedArgument" line="144" assertions="2">
         <failure type="MixedArgument">message: Argument 2 of preg_match cannot be mixed, expecting string
 type: MixedArgument
 snippet: if (preg_match("/^ *([0-9]+) .*ssh -fNT -i {$key} -R 0:0.0.0.0:22 {$user}@{$host}/", $proc, $matches)) {
