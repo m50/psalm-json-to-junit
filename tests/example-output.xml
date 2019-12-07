@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
   <testsuite failures="3" warnings="0" name="psalm" tests="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/junit-team/junit5/r5.5.1/platform-tests/src/test/resources/jenkins-junit.xsd">
-    <testcase name="src/File.php" file="src/File.php" tests="3" failures="3" warnings="0">
-      <failure type="MixedAssignment">{
-    "message": "Cannot assign $proc to a mixed type",
-    "type": "MixedAssignment",
-    "snippet": "        foreach ($out as $proc) {",
-    "selected_text": "$proc",
-    "line": 140,
-    "column_from": 26,
-    "column_to": 31
-}</failure>
-      <failure type="MixedArgument">{
-    "message": "Argument 2 of preg_match cannot be mixed, expecting string",
-    "type": "MixedArgument",
-    "snippet": "            if (preg_match(\"\/^ *([0-9]+) sh -c \/\", $proc)) {",
-    "selected_text": "$proc",
-    "line": 141,
-    "column_from": 52,
-    "column_to": 57
-}</failure>
-      <failure type="MixedArgument">{
-    "message": "Argument 2 of preg_match cannot be mixed, expecting string",
-    "type": "MixedArgument",
-    "snippet": "            if (preg_match(\"\/^ *([0-9]+) .*ssh -fNT -i {$key} -R 0:0.0.0.0:22 {$user}@{$host}\/\", $proc, $matches)) {",
-    "selected_text": "$proc",
-    "line": 144,
-    "column_from": 98,
-    "column_to": 103
-}</failure>
+    <testcase name="src/File.php" file="src/File.php" assertions="3" failures="3" warnings="0">
+      <failure type="MixedAssignment">
+message: Cannot assign $proc to a mixed type
+type: MixedAssignment
+snippet: foreach ($out as $proc) {
+selected_text: $proc
+line: 140
+column_from: 26
+column_to: 31
+</failure>
+      <failure type="MixedArgument">
+message: Argument 2 of preg_match cannot be mixed, expecting string
+type: MixedArgument
+snippet: if (preg_match("/^ *([0-9]+) sh -c /", $proc)) {
+selected_text: $proc
+line: 141
+column_from: 52
+column_to: 57
+</failure>
+      <failure type="MixedArgument">
+message: Argument 2 of preg_match cannot be mixed, expecting string
+type: MixedArgument
+snippet: if (preg_match("/^ *([0-9]+) .*ssh -fNT -i {$key} -R 0:0.0.0.0:22 {$user}@{$host}/", $proc, $matches)) {
+selected_text: $proc
+line: 144
+column_from: 98
+column_to: 103
+</failure>
     </testcase>
   </testsuite>
 </testsuites>

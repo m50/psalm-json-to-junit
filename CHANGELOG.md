@@ -1,3 +1,6 @@
+## v1.1.0
+- Change output format so that it is a bit cleaner.
+
 ## v1.0.3
 - Fix require statement in bin file.
 

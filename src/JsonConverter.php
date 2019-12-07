@@ -72,7 +72,7 @@ class JsonConverter
         $testcase = $dom->createElement('testcase');
         $testcase->setAttribute('name', $file);
         $testcase->setAttribute('file', $file);
-        $testcase->setAttribute('tests', (string) $totalTests);
+        $testcase->setAttribute('assertions', (string) $totalTests);
         $testcase->setAttribute('failures', (string) $report['errors']);
         $testcase->setAttribute('warnings', (string) $report['warnings']);
 
@@ -81,7 +81,7 @@ class JsonConverter
             foreach ($data as $d) {
                 $failure = $dom->createElement('failure');
                 $failure->setAttribute('type', $type);
-                $failure->nodeValue = json_encode($d, JSON_PRETTY_PRINT);
+                $failure->nodeValue = $this->dataToOutput($d);
 
                 $testcase->appendChild($failure);
             }
@@ -159,5 +159,18 @@ class JsonConverter
         }
 
         return $nfailures;
+    }
+
+    private function dataToOutput(array $data): string
+    {
+        $ret = '';
+
+        foreach ($data as $key => $value) {
+            $ret .= "\n$key: " . trim($value);
+        }
+
+        $ret .= "\n";
+
+        return $ret;
     }
 }
