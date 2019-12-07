@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-require __DIR__ . "/../vendor/autoload.php";
+require __DIR__.'/../vendor/autoload.php';
 
 $app = new Application('Psalm\'s JSON to JUNIT converter', '1.0.0');
 
@@ -26,7 +26,7 @@ $app->register('convert:json')
     ->setCode(function (InputInterface $input, OutputInterface $output) {
         $inputFile = $input->getArgument('input-file');
         if (strpos($inputFile, 'json') === false) {
-            $output->writeln("<error>input-file must be a json file.</error>");
+            $output->writeln('<error>input-file must be a json file.</error>');
 
             return 1;
         }

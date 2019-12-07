@@ -13,6 +13,7 @@ class JsonConverter
 
     /**
      * JsonProcessor constructor.
+     *
      * @param string $json
      */
     public function __construct(string $json)
@@ -94,9 +95,9 @@ class JsonConverter
 
         foreach ($data as $error) {
             $fname = $error['file_name'];
-            if (! isset($ndata[$fname])) {
+            if (!isset($ndata[$fname])) {
                 $ndata[$fname] = [
-                    'errors' => $error['severity'] === 'error' ? 1 : 0,
+                    'errors'   => $error['severity'] === 'error' ? 1 : 0,
                     'warnings' => $error['severity'] !== 'error' ? 1 : 0,
                     'failures' => [
                         $this->createFailure($error),
@@ -120,13 +121,13 @@ class JsonConverter
         return [
             'type' => $error['type'],
             'data' => [
-                'message' => $error['message'],
-                'type' => $error['type'],
-                'snippet' => $error['snippet'],
+                'message'       => $error['message'],
+                'type'          => $error['type'],
+                'snippet'       => $error['snippet'],
                 'selected_text' => $error['selected_text'],
-                'line' => $error['line_from'],
-                'column_from' => $error['column_from'],
-                'column_to' => $error['column_to'],
+                'line'          => $error['line_from'],
+                'column_from'   => $error['column_from'],
+                'column_to'     => $error['column_to'],
             ],
         ];
     }
@@ -134,9 +135,9 @@ class JsonConverter
     private function getTotals(): array
     {
         $totals = [
-            'errors' => 0,
+            'errors'   => 0,
             'warnings' => 0,
-            'tests' => 0,
+            'tests'    => 0,
         ];
 
         foreach ($this->data as $file => $error) {
