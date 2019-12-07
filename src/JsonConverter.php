@@ -166,7 +166,7 @@ class JsonConverter
         $ret = '';
 
         foreach ($data as $key => $value) {
-            $ret .= "\n$key: " . trim($value);
+            $ret .= "\n$key: ".trim($value);
         }
 
         $ret .= "\n";
