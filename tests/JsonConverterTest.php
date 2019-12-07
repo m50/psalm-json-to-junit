@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class JsonConverterTest extends TestCase
 {
     /** @test */
-    public function it_converts_json_correctly()
+    function it_converts_json_correctly()
     {
         $json = file_get_contents(__DIR__.'/example-input.json');
         $converter = new JsonConverter($json);
