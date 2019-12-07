@@ -1,15 +1,15 @@
 # Changelog
 
-## v1.2.1
+## v1.2.1
 
 - Fix the missing testcase when psalm reports no errors.
 
-## v1.2.0
+## v1.2.0
 
 - Change output format so that it is even cleaner.
   - Add better support for gitlab's parsing.
 
-## v1.1.0
+## v1.1.0
 
 - Change output format so that it is a bit cleaner.
 
