@@ -81,21 +81,21 @@ class JsonConverter
 
         $iterator = 0;
         foreach ($failuresByType as $type => $data) {
-            $testcase = $dom->createElement('testcase');
-            $testcase->setAttribute('name', "{$file}.{$type}.{$iterator}");
-            $testcase->setAttribute('file', $file);
-            $testcase->setAttribute('class', $type);
-            $testcase->setAttribute('classname', $type);
-            $testcase->setAttribute('line', $data[0]['line']);
-            $testcase->setAttribute('assertions', (string) count($data));
             foreach ($data as $d) {
+                $testcase = $dom->createElement('testcase');
+                $testcase->setAttribute('name', "{$file}-{$type}-{$iterator}");
+                $testcase->setAttribute('file', $file);
+                $testcase->setAttribute('class', $type);
+                $testcase->setAttribute('classname', $type);
+                $testcase->setAttribute('line', $data[0]['line']);
+                $testcase->setAttribute('assertions', (string) count($data));
                 $failure = $dom->createElement('failure');
                 $failure->setAttribute('type', $type);
                 $failure->nodeValue = $this->dataToOutput($d);
 
                 $testcase->appendChild($failure);
+                $testsuite->appendChild($testcase);
             }
-            $testsuite->appendChild($testcase);
             $iterator++;
         }
         $parent->appendChild($testsuite);
@@ -107,7 +107,7 @@ class JsonConverter
 
         foreach ($data as $error) {
             $fname = $error['file_name'];
-            if (!isset($ndata[$fname])) {
+            if (! isset($ndata[$fname])) {
                 $ndata[$fname] = [
                     'errors'   => $error['severity'] === 'error' ? 1 : 0,
                     'warnings' => $error['severity'] !== 'error' ? 1 : 0,
