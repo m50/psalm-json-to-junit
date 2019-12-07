@@ -55,6 +55,12 @@ class JsonConverter
         $suites->appendChild($testsuite);
         $dom->appendChild($suites);
 
+        if ($totals['tests'] === 0) {
+            $testcase = $dom->createElement('testcase');
+            $testcase->setAttribute('name', 'psalm');
+            $testsuite->appendChild($testcase);
+        }
+
         foreach ($this->data as $file => $report) {
             $this->createTestSuite($dom, $testsuite, $file, $report);
         }
