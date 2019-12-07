@@ -79,9 +79,10 @@ class JsonConverter
         $failuresByType = $this->groupByType($report['failures']);
         $testsuite->setAttribute('tests', (string) count($failuresByType));
 
+        $iterator = 0;
         foreach ($failuresByType as $type => $data) {
             $testcase = $dom->createElement('testcase');
-            $testcase->setAttribute('name', $type);
+            $testcase->setAttribute('name', "{$file}.{$type}.{$iterator}");
             $testcase->setAttribute('file', $file);
             $testcase->setAttribute('class', $type);
             $testcase->setAttribute('classname', $type);
@@ -95,6 +96,7 @@ class JsonConverter
                 $testcase->appendChild($failure);
             }
             $testsuite->appendChild($testcase);
+            $iterator++;
         }
         $parent->appendChild($testsuite);
     }
