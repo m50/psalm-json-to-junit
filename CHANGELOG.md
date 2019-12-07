@@ -1,3 +1,6 @@
+## v1.0.3
+- Fix require statement in bin file.
+
 ## v1.0.2
 - Fix link to bin file. Was pointing to old name.
 
