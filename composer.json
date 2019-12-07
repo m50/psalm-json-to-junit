@@ -6,7 +6,6 @@
         "CD",
         "junit",
         "psalm",
-        "vimeo/psalm",
         "report"
     ],
     "license": "MIT",
