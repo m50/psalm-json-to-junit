@@ -83,12 +83,13 @@ class JsonConverter
         foreach ($failuresByType as $type => $data) {
             foreach ($data as $d) {
                 $testcase = $dom->createElement('testcase');
-                $testcase->setAttribute('name', "{$file}-{$type}-{$iterator}");
+                $testcase->setAttribute('name', "{$file}:{$d['line']}");
                 $testcase->setAttribute('file', $file);
                 $testcase->setAttribute('class', $type);
                 $testcase->setAttribute('classname', $type);
-                $testcase->setAttribute('line', $data[0]['line']);
+                $testcase->setAttribute('line', $d['line']);
                 $testcase->setAttribute('assertions', (string) count($data));
+
                 $failure = $dom->createElement('failure');
                 $failure->setAttribute('type', $type);
                 $failure->nodeValue = $this->dataToOutput($d);
