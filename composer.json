@@ -40,7 +40,7 @@
         }
     },
     "bin": [
-        "bin/psalm-to-junit.php"
+        "bin/psalm-to-junit"
     ],
     "minimum-stability": "dev",
     "prefer-stable": true
