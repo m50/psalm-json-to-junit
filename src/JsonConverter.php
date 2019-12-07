@@ -56,28 +56,37 @@ class JsonConverter
         $dom->appendChild($suites);
 
         foreach ($this->data as $file => $report) {
-            $this->createTestCase($dom, $testsuite, $file, $report);
+            $this->createTestSuite($dom, $testsuite, $file, $report);
         }
 
         return $dom->saveXML();
     }
 
-    private function createTestCase(DOMDocument $dom, DOMElement $parent, string $file, array $report): void
+    private function createTestSuite(DOMDocument $dom, DOMElement $parent, string $file, array $report): void
     {
         $totalTests = $report['errors'] + $report['warnings'];
         if ($totalTests < 1) {
             $totalTests = 1;
         }
 
-        $testcase = $dom->createElement('testcase');
-        $testcase->setAttribute('name', $file);
-        $testcase->setAttribute('file', $file);
-        $testcase->setAttribute('assertions', (string) $totalTests);
-        $testcase->setAttribute('failures', (string) $report['errors']);
-        $testcase->setAttribute('warnings', (string) $report['warnings']);
+        $testsuite = $dom->createElement('testsuite');
+        $testsuite->setAttribute('name', $file);
+        $testsuite->setAttribute('file', $file);
+        $testsuite->setAttribute('assertions', (string) $totalTests);
+        $testsuite->setAttribute('failures', (string) $report['errors']);
+        $testsuite->setAttribute('warnings', (string) $report['warnings']);
 
         $failuresByType = $this->groupByType($report['failures']);
+        $testsuite->setAttribute('tests', (string) count($failuresByType));
+
         foreach ($failuresByType as $type => $data) {
+            $testcase = $dom->createElement('testcase');
+            $testcase->setAttribute('name', $type);
+            $testcase->setAttribute('file', $file);
+            $testcase->setAttribute('class', $type);
+            $testcase->setAttribute('classname', $type);
+            $testcase->setAttribute('line', $data[0]['line']);
+            $testcase->setAttribute('assertions', (string) count($data));
             foreach ($data as $d) {
                 $failure = $dom->createElement('failure');
                 $failure->setAttribute('type', $type);
@@ -85,8 +94,9 @@ class JsonConverter
 
                 $testcase->appendChild($failure);
             }
+            $testsuite->appendChild($testcase);
         }
-        $parent->appendChild($testcase);
+        $parent->appendChild($testsuite);
     }
 
     private function processInput(array $data): void
@@ -166,10 +176,9 @@ class JsonConverter
         $ret = '';
 
         foreach ($data as $key => $value) {
-            $ret .= "\n$key: ".trim($value);
+            $value = trim($value);
+            $ret .= "{$key}: {$value}\n";
         }
-
-        $ret .= "\n";
 
         return $ret;
     }
