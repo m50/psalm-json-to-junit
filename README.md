@@ -36,4 +36,4 @@ That will generate a new report.xml which you can use in your CI report system.
 
 * [Marisa Clardy](https://github.com/m50)
 
-  ![Twitter Follow](https://img.shields.io/twitter/follow/MarisaCodes?label=Follow&style=social)
+  [![Twitter Follow](https://img.shields.io/twitter/follow/MarisaCodes?label=Follow&style=social)](https://twitter.com/MarisaCodes)
