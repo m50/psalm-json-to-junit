@@ -23,7 +23,7 @@ $app->register('convert:json')
         InputArgument::OPTIONAL,
         'The file you wish to output to. Will output to STDOUT if not specified.'
     )
-    ->setCode(function (InputInterface $input, OutputInterface $output) {
+    ->setCode(function (InputInterface $input, OutputInterface $output): int {
         $inputFile = (string) $input->getArgument('input-file');
         if (strpos($inputFile, 'json') === false) {
             $output->writeln('<error>input-file must be a json file.</error>');
@@ -48,6 +48,8 @@ $app->register('convert:json')
             file_put_contents($outputFile, $xml);
             $output->writeln('<info>Success.</info>');
         }
+
+        return 0;
     });
 
 $app->run();
