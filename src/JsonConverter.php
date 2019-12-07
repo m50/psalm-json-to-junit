@@ -77,11 +77,13 @@ class JsonConverter
 
         $failuresByType = $this->groupByType($report['failures']);
         foreach ($failuresByType as $type => $data) {
-            $failure = $dom->createElement('failure');
-            $failure->setAttribute('type', $type);
-            $failure->setAttribute('message', json_encode($data, JSON_PRETTY_PRINT));
+            foreach ($data as $d) {
+                $failure = $dom->createElement('failure');
+                $failure->setAttribute('type', $type);
+                $failure->nodeValue = json_encode($d, JSON_PRETTY_PRINT);
 
-            $testcase->appendChild($failure);
+                $testcase->appendChild($failure);
+            }
         }
         $parent->appendChild($testcase);
     }
@@ -150,6 +152,7 @@ class JsonConverter
     {
         $nfailures = [];
 
+        /** @var array $failure */
         foreach ($failures as $failure) {
             $nfailures[$failure['type']][] = $failure['data'];
         }
