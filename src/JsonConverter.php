@@ -185,7 +185,7 @@ class JsonConverter
         $ret = '';
 
         foreach ($data as $key => $value) {
-            $value = trim($value);
+            $value = htmlentities(trim($value));
             $ret .= "{$key}: {$value}\n";
         }
 
