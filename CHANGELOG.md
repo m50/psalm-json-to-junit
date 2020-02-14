@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.2.2
+
+- Fix an error when converting snippet with passed variable by reference in message.
+
 ## v1.2.1
 
 - Fix the missing testcase when psalm reports no errors.
